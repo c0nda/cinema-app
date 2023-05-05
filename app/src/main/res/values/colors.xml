@@ -11,4 +11,5 @@
     <color name="gray_back">#6D6D80</color>
     <color name="red_tag">#FF3466</color>
     <color name="while_opacity_75">#BFFFFFFF</color>
+    <color name="gray_fragment">#63637580</color>
 </resources>
