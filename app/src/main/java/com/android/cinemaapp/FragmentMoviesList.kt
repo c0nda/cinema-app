@@ -27,7 +27,7 @@ class FragmentMoviesList : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val listener = activity as OnAvengersCardClickListener
-        listener.onAvengersCardClick()
+        val listener = activity as OnAvengersCardClickListener?
+        listener?.onAvengersCardClick()
     }
 }
