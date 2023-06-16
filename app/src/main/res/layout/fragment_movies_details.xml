@@ -15,9 +15,9 @@
         <ImageView
             android:id="@+id/image_avengers"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="298dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/origmdpi"
+            android:src="@drawable/avengers_details_xxxhdpi"
             app:layout_constraintBottom_toTopOf="@+id/film_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,102 +225,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content_storyline" />
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_actors_list"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="16dp"
-            android:fillViewport="true"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cast">
+            app:layout_constraintTop_toBottomOf="@id/tv_cast"
+            tools:itemCount="4"
+            tools:listitem="@layout/view_holder_actor">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/iv_robert_downey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/robert_downey_jr_mdpi"
-                    app:layout_constraintEnd_toStartOf="@id/iv_chris_evans"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/robert_downey_jr"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@id/iv_robert_downey"
-                    app:layout_constraintStart_toStartOf="@id/iv_robert_downey"
-                    app:layout_constraintTop_toBottomOf="@id/iv_robert_downey" />
-
-                <ImageView
-                    android:id="@+id/iv_chris_evans"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/chris_evans_mdpi"
-                    app:layout_constraintEnd_toStartOf="@id/iv_mark_ruffalo"
-                    app:layout_constraintStart_toEndOf="@id/iv_robert_downey"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/chris_evans"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@id/iv_chris_evans"
-                    app:layout_constraintStart_toStartOf="@id/iv_chris_evans"
-                    app:layout_constraintTop_toBottomOf="@id/iv_chris_evans" />
-
-                <ImageView
-                    android:id="@+id/iv_mark_ruffalo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/mark_ruffalo_mdpi"
-                    app:layout_constraintEnd_toStartOf="@id/iv_chris_hemsworth"
-                    app:layout_constraintStart_toEndOf="@id/iv_chris_evans"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/mark_ruffalo"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@id/iv_mark_ruffalo"
-                    app:layout_constraintStart_toStartOf="@id/iv_mark_ruffalo"
-                    app:layout_constraintTop_toBottomOf="@id/iv_mark_ruffalo" />
-
-                <ImageView
-                    android:id="@+id/iv_chris_hemsworth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/chris_hemsworth_mdpi"
-                    app:layout_constraintStart_toEndOf="@id/iv_mark_ruffalo"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/chris_hemsworth"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@id/iv_chris_hemsworth"
-                    app:layout_constraintStart_toStartOf="@id/iv_chris_hemsworth"
-                    app:layout_constraintTop_toBottomOf="@id/iv_chris_hemsworth" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </HorizontalScrollView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
