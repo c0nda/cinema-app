@@ -10,7 +10,8 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.OnAvengersCardClick
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().apply {
-                add(R.id.main_container, FragmentMoviesList())
+//                add(R.id.main_container, FragmentMoviesList())
+                add(R.id.main_container, FragmentMoviesDetails())
                 commit()
             }
         }
