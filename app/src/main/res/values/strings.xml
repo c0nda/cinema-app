@@ -1,6 +1,13 @@
 <resources>
+
     <string name="app_name">CinemaApp</string>
-    <string name="avengers_end_game">Avengers: End Game</string>
+
+    <!-- Movies list screen -->
+    <string name="movies_list_name">Avengers: End Game</string>
+    <string name="movies_list_age_template">%d+</string>
+    <string name="movies_list_reviews_template">%d REVIEWS</string>
+    <string name="movies_list_duration_template">%d MIN</string>
+    
     <string name="_13">13+</string>
     <string name="back">Back</string>
     <string name="_tag">Action, Adventure, Fantasy</string>
