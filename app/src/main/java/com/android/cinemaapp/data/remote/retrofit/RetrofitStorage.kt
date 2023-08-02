@@ -40,7 +40,7 @@ class RetrofitStorage(private val api: TheMovieDBApi) : RemoteDataSource {
                         id = genre.id,
                         name = genre.name
                     )
-                },
+                }.filter { it.id in movie.genreIds },
                 runningTime = 150,
                 reviewCount = movie.voteCount,
                 isLiked = false,
