@@ -25,10 +25,10 @@ class RetrofitStorage(private val api: TheMovieDBApi) : RemoteDataSource {
 
     override suspend fun loadMovies(): List<Movie> {
         imageResponse = api.getConfiguration().images
-        baseUrl = imageResponse?.baseUrl
+        baseUrl = imageResponse?.secureBaseUrl
         profileSize = imageResponse?.profileSizes?.find { it == "w185" }
         backdropSize = imageResponse?.backdropSizes?.find { it == "w780" }
-        posterSize = imageResponse?.posterSizes?.find { it == "w342" }
+        posterSize = imageResponse?.posterSizes?.find { it == "w500" }
 
         return api.getMoviesList().results.map { movie ->
             Movie(
@@ -78,5 +78,4 @@ class RetrofitStorage(private val api: TheMovieDBApi) : RemoteDataSource {
             }
         )
     }
-
 }
