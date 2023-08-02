@@ -64,8 +64,8 @@ class FragmentMoviesDetails : Fragment() {
         viewModel.loadDetails(movieId)
 
         viewModel.movieDetails.observe(
-            viewLifecycleOwner,
-            { movie -> movie?.let { bindUI(view, it) } })
+            viewLifecycleOwner
+        ) { movie -> movie?.let { bindUI(view, it) } }
     }
 
     private fun bindUI(view: View, movie: MovieDetails) {
@@ -75,7 +75,8 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun updateMovieDetailsInfo(movie: MovieDetails) {
-        view?.findViewById<ImageView>(R.id.iv_movie_details_image)?.load(movie.detailImageUrl)
+        view?.findViewById<ImageView>(R.id.iv_movie_details_image)
+            ?.load(movie.detailImageUrl) { crossfade(true) }
         view?.findViewById<TextView>(R.id.film_name)?.text = movie.title
         view?.findViewById<TextView>(R.id.content_storyline)?.text = movie.storyLine
         view?.findViewById<TextView>(R.id.tv_tag)?.text = movie.genres.joinToString { it.name }
@@ -94,7 +95,8 @@ class FragmentMoviesDetails : Fragment() {
 
         starsImage.forEachIndexed { index, imageView ->
             imageView?.let {
-                val colorId = if (movie.rating / 2 > index) R.color.pink_like else R.color.gray_fragment
+                val colorId =
+                    if (movie.rating / 2 > index) R.color.pink_like else R.color.gray_fragment
                 ImageViewCompat.setImageTintList(
                     imageView, ColorStateList.valueOf(
                         ContextCompat.getColor(imageView.context, colorId)
