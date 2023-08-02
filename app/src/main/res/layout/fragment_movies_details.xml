@@ -13,23 +13,23 @@
         android:background="@color/background_black">
 
         <ImageView
-            android:id="@+id/image_avengers"
-            android:layout_width="match_parent"
-            android:layout_height="298dp"
+            android:id="@+id/iv_movie_details_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/avengers_details_xxxhdpi"
+            app:layout_constraintDimensionRatio="3:2"
             app:layout_constraintBottom_toTopOf="@+id/film_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_movie_details_image"
-            android:layout_width="match_parent"
+        <View
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/mask_movie_image_mdpi"
-            app:layout_constraintBottom_toBottomOf="@+id/image_avengers"
+            android:background="@drawable/mask_movie_image_mdpi"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_movie_details_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="image_avengers" />
+            app:constraint_referenced_ids="iv_movie_details_image" />
 
         <TextView
             android:id="@+id/film_name"
@@ -124,7 +124,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="3dp"
-            tools:src="@drawable/ic_redstar_mdpi"
+            android:src="@drawable/ic_star_mdpi"
             app:layout_constraintBottom_toBottomOf="@+id/tv_movie_details_reviews"
             app:layout_constraintEnd_toStartOf="@+id/iv_md_second_star"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="3dp"
-            tools:src="@drawable/ic_redstar_mdpi"
+            android:src="@drawable/ic_star_mdpi"
             app:layout_constraintBottom_toBottomOf="@+id/tv_movie_details_reviews"
             app:layout_constraintEnd_toStartOf="@+id/iv_md_third_star"
             app:layout_constraintStart_toEndOf="@+id/iv_md_first_star"
@@ -148,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="3dp"
-            tools:src="@drawable/ic_redstar_mdpi"
+            android:src="@drawable/ic_star_mdpi"
             app:layout_constraintBottom_toBottomOf="@+id/tv_movie_details_reviews"
             app:layout_constraintEnd_toStartOf="@id/iv_md_forth_star"
             app:layout_constraintStart_toEndOf="@+id/iv_md_second_star"
@@ -159,7 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            tools:src="@drawable/ic_redstar_mdpi"
+            android:src="@drawable/ic_star_mdpi"
             app:layout_constraintBottom_toBottomOf="@+id/tv_movie_details_reviews"
             app:layout_constraintEnd_toStartOf="@id/iv_md_fifth_star"
             app:layout_constraintStart_toEndOf="@id/iv_md_third_star"
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginTop="4dp"
-            tools:src="@drawable/ic_star_mdpi"
+            android:src="@drawable/ic_star_mdpi"
             app:layout_constraintBottom_toBottomOf="@+id/tv_movie_details_reviews"
             app:layout_constraintStart_toEndOf="@id/iv_md_forth_star"
             app:layout_constraintTop_toBottomOf="@+id/tv_tag" />
