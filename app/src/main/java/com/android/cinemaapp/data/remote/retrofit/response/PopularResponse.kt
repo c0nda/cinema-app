@@ -8,6 +8,6 @@ import kotlinx.serialization.Serializable
 data class PopularResponse(
     @SerialName("page") val page: Int,
     @SerialName("results") val results: List<ResultResponse>,
-    @SerialName("total_pages") val totalPager: Int,
+    @SerialName("total_pages") val totalPages: Int,
     @SerialName("total_results") val totalResults: Int
 )
