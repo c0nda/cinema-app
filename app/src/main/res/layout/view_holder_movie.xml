@@ -22,22 +22,16 @@
 
     <ImageView
         android:id="@+id/iv_movie_image"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="6dp"
         android:adjustViewBounds="true"
-        android:layout_width="166dp"
-        android:layout_height="246dp"
-        android:layout_marginTop="1dp"
+        android:background="@drawable/mask_avengers_movies_list"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/avengers_movie_xxxhdpi" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/mask_avengers_movies_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_genres"
@@ -45,10 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:textColor="@color/red_tag"
-        android:textSize="8sp"
+        android:textSize="10sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/iv_first_star"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SmallSp"
         tools:text="@string/_tag" />
 
@@ -109,7 +104,7 @@
         android:layout_marginStart="6dp"
         android:text="@string/_reviews"
         android:textColor="@color/gray_back"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_fifth_star"
         app:layout_constraintStart_toEndOf="@id/iv_fifth_star"
@@ -120,15 +115,15 @@
         android:id="@+id/tv_movie_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/movies_list_name"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        android:textStyle="bold"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/movies_list_name"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_movie_image"
         tools:ignore="SmallSp" />
 
@@ -138,10 +133,11 @@
         android:layout_height="wrap_content"
         android:text="@string/_137_min"
         android:textColor="@color/gray_back"
-        android:textSize="8sp"
+        android:layout_marginTop="1dp"
+        android:textSize="11sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/tv_movie_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_movie_name"
-        tools:ignore="SmallSp" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_name" />
 
     <ImageView
         android:id="@+id/gray_rectangle"
@@ -169,11 +165,11 @@
         android:id="@+id/iv_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="6dp"
         android:src="@drawable/like_empty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/iv_movie_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_movie_image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
