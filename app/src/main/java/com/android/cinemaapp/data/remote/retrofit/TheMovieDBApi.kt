@@ -3,6 +3,7 @@ package com.android.cinemaapp.data.remote.retrofit
 import com.android.cinemaapp.data.remote.retrofit.response.*
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TheMovieDBApi {
 
@@ -20,4 +21,7 @@ interface TheMovieDBApi {
 
     @GET("movie/{movie_id}/credits")
     suspend fun getMovieCast(@Path("movie_id") movieId: Int): MovieCastResponse
+
+    @GET("search/movie")
+    suspend fun getSearchMovie(@Query("query") name: String): SearchResponse
 }

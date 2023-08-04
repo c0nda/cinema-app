@@ -52,6 +52,35 @@ class RetrofitStorage(private val api: TheMovieDBApi) : RemoteDataSource {
         }
     }
 
+    override suspend fun searchMovies(name: String): List<Movie> {
+        imageResponse = api.getConfiguration().images
+        baseUrl = imageResponse?.secureBaseUrl
+        profileSize = imageResponse?.profileSizes?.find { it == "w185" }
+        backdropSize = imageResponse?.backdropSizes?.find { it == "w780" }
+        posterSize = imageResponse?.posterSizes?.find { it == "w500" }
+
+        return api.getSearchMovie(name).results.map { movie ->
+            Movie(
+                id = movie.id,
+                title = movie.title,
+                pgAge = if (movie.adult) 16 else 13,
+                genres = api.getGenres().genres.map { genre ->
+                    Genre(
+                        id = genre.id,
+                        name = genre.name
+                    )
+                }.filter { it.id in movie.genreIds },
+                runningTime = 150,
+                reviewCount = movie.voteCount,
+                isLiked = false,
+                rating = movie.voteAverage.toInt(),
+                imageUrl = baseUrl.orEmpty()
+                    .plus(posterSize.orEmpty())
+                    .plus(movie.posterPath)
+            )
+        }
+    }
+
     override suspend fun loadMovie(movieId: Int): MovieDetails {
         val details = api.getMovieDetails(movieId)
         return MovieDetails(

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -34,6 +35,23 @@ class FragmentMoviesList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val searchView = view.findViewById<androidx.appcompat.widget.SearchView>(R.id.sv_search_film)
+
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    viewModel.searchMovies(newText)
+                }
+                return true
+            }
+        })
+
+
         view.findViewById<RecyclerView>(R.id.rv_movies_list).apply {
             this.layoutManager = GridLayoutManager(this.context, 2)
             val adapter = MovieAdapter { movie ->
@@ -46,8 +64,8 @@ class FragmentMoviesList : Fragment() {
 
     private fun loadDataToAdapter(adapter: MovieAdapter) {
         viewModel.movies.observe(
-            viewLifecycleOwner,
-            { moviesList -> adapter.submitList(moviesList) })
+            viewLifecycleOwner
+        ) { moviesList -> adapter.submitList(moviesList) }
     }
 
     override fun onAttach(context: Context) {

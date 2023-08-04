@@ -22,4 +22,10 @@ class MoviesViewModel(private val repository: MovieRepository) : ViewModel() {
             _movies.postValue(repository.loadMovies())
         }
     }
+
+    fun searchMovies(name: String) {
+        viewModelScope.launch {
+            _movies.postValue(repository.searchMovies(name))
+        }
+    }
 }

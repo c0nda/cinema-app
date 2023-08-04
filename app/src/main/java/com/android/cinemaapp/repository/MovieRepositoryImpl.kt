@@ -18,6 +18,10 @@ class MovieRepositoryImpl(
         return remoteDataSource.loadMovies()
     }
 
+    override suspend fun searchMovies(name: String): List<Movie> {
+        return remoteDataSource.searchMovies(name)
+    }
+
     override suspend fun loadMovie(movieId: Int): MovieDetails {
         return remoteDataSource.loadMovie(movieId)
     }

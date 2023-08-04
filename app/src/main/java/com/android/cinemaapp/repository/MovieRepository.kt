@@ -9,5 +9,7 @@ interface MovieRepository {
 
     suspend fun loadMovies(): List<Movie>
 
+    suspend fun searchMovies(name: String): List<Movie>
+
     suspend fun loadMovie(movieId: Int): MovieDetails
 }
