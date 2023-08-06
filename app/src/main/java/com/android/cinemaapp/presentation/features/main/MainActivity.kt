@@ -2,8 +2,9 @@ package com.android.cinemaapp.presentation.features.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.android.cinemaapp.CinemaApp
 import com.android.cinemaapp.R
-import com.android.cinemaapp.data.local.json.JsonStorage
+import com.android.cinemaapp.data.local.room.RoomStorage
 import com.android.cinemaapp.data.remote.retrofit.RetrofitStorage
 import com.android.cinemaapp.di.MovieRepositoryProvider
 import com.android.cinemaapp.di.NetworkModule
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity(),
 
     private val networkModule = NetworkModule()
     private val remoteDataSource = RetrofitStorage(networkModule.theMovieDBApi)
-    private val localDataSource = JsonStorage(this)
+    private val localDataSource = RoomStorage(CinemaApp.db)
     private val movieRepository = MovieRepositoryImpl(localDataSource, remoteDataSource)
 
     override fun onCreate(savedInstanceState: Bundle?) {
