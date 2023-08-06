@@ -7,7 +7,7 @@ interface LocalDataSource {
 
     suspend fun loadMovies(): List<Movie>
 
-    suspend fun loadMovie(movieId: Int): Movie
+    suspend fun loadMovie(movieId: Int): MovieDetails
 
     fun insertMovies(movies: List<Movie>)
 
