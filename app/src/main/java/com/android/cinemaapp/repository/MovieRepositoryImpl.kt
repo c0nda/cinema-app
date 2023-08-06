@@ -10,10 +10,6 @@ class MovieRepositoryImpl(
     private val remoteDataSource: RemoteDataSource
 ) : MovieRepository {
 
-    override suspend fun fetchConfiguration() {
-        remoteDataSource.fetchConfiguration()
-    }
-
     override suspend fun loadMovies(): List<Movie> {
         return remoteDataSource.loadMovies()
     }
