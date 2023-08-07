@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
     foreignKeys = [ForeignKey(
         entity = MovieDB::class,
         parentColumns = ["id"],
-        childColumns = ["filmId"],
+        childColumns = ["parentId"],
         onDelete = ForeignKey.CASCADE
     )]
 )
