@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.android.cinemaapp.data.local.room.dao.GenresDao
 import com.android.cinemaapp.data.local.room.dao.MovieDetailsDao
 import com.android.cinemaapp.data.local.room.dao.MoviesDao
-import com.android.cinemaapp.data.local.room.entities.ActorDB
-import com.android.cinemaapp.data.local.room.entities.GenreDB
-import com.android.cinemaapp.data.local.room.entities.MovieDB
-import com.android.cinemaapp.data.local.room.entities.MovieDetailsDB
+import com.android.cinemaapp.data.local.room.entities.*
 
 @Database(
     entities = [MovieDB::class, MovieDetailsDB::class, ActorDB::class, GenreDB::class],
@@ -40,4 +38,5 @@ abstract class MovieRoomDatabase : RoomDatabase() {
 
     abstract fun getMoviesDao(): MoviesDao
     abstract fun getMovieDetailsDao(): MovieDetailsDao
+    abstract fun getGenresDao(): GenresDao
 }
