@@ -17,5 +17,5 @@ import androidx.room.ForeignKey
 data class GenreDB(
     val id: Int,
     val name: String,
-    val parentId: Int
+    var parentId: Int
 )
