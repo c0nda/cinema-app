@@ -1,22 +1,22 @@
 package com.android.cinemaapp.data.local.room
 
 import com.android.cinemaapp.data.local.LocalDataSource
+import com.android.cinemaapp.data.local.room.entities.GenreDB
 import com.android.cinemaapp.data.local.room.entities.MovieDB
 import com.android.cinemaapp.model.Actor
 import com.android.cinemaapp.model.Genre
 import com.android.cinemaapp.model.Movie
 import com.android.cinemaapp.model.MovieDetails
 
-class RoomStorage(private val db: MovieRoomDatabase): LocalDataSource {
+class RoomStorage(private val db: MovieRoomDatabase) : LocalDataSource {
     override suspend fun loadMovies(): List<Movie> {
-        return db.getMoviesDao().getMovies().map {
-            movie ->
+        return db.getMoviesDao().getMovies().map { movie ->
             Movie(
                 id = movie.movie.id,
                 pgAge = movie.movie.pgAge,
                 title = movie.movie.title,
-                genres = movie.genres.map {
-                    genre -> Genre(genre.id, genre.name)
+                genres = movie.genres.map { genre ->
+                    Genre(genre.id, genre.name)
                 },
                 runningTime = movie.movie.runningTime,
                 reviewCount = movie.movie.reviewCount,
@@ -28,13 +28,13 @@ class RoomStorage(private val db: MovieRoomDatabase): LocalDataSource {
     }
 
     override suspend fun loadMovie(movieId: Int): MovieDetails {
-        val movieDetails =  db.getMovieDetailsDao().getMovieDetails()
+        val movieDetails = db.getMovieDetailsDao().getMovieDetails()
         return MovieDetails(
             id = movieDetails.details.id,
             pgAge = movieDetails.details.pgAge,
             title = movieDetails.details.title,
-            genres = movieDetails.genres.map {
-                    genre -> Genre(genre.id, genre.name)
+            genres = movieDetails.genres.map { genre ->
+                Genre(genre.id, genre.name)
             },
             runtime = movieDetails.details.runtime,
             reviewCount = movieDetails.details.reviewCount,
@@ -42,8 +42,7 @@ class RoomStorage(private val db: MovieRoomDatabase): LocalDataSource {
             rating = movieDetails.details.rating,
             detailImageUrl = movieDetails.details.detailImageUrl,
             storyLine = movieDetails.details.storyLine,
-            actors = movieDetails.actors.map {
-                actor ->
+            actors = movieDetails.actors.map { actor ->
                 Actor(
                     id = actor.id,
                     name = actor.name,
@@ -66,10 +65,26 @@ class RoomStorage(private val db: MovieRoomDatabase): LocalDataSource {
                 imageUrl = movie.imageUrl
             )
         }
-        return db.getMoviesDao().insertMovies(moviesDB)
+
+        db.getMoviesDao().insertMovies(moviesDB)
+
+        val genresDB = movies.map { movie -> movie.genres.map { genre ->
+            GenreDB(
+                id = genre.id,
+                name = genre.name,
+                parentId = -1
+            )
+        }}
+
+        val moviesWithGenres = moviesDB zip genresDB
+
+        moviesWithGenres.forEach {
+            db.getGenresDao().insertGenresForMovie(it.first, it.second)
+        }
     }
 
     override fun insertMovieDetails(details: MovieDetails) {
         TODO()
     }
+
 }
