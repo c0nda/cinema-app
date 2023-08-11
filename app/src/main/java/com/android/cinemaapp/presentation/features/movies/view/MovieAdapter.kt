@@ -36,7 +36,6 @@ class MovieAdapter(private val onClickCard: (item: Movie) -> Unit) :
         private val pgText: TextView = itemView.findViewById(R.id.tv_age_limit)
         private val genresText: TextView = itemView.findViewById(R.id.tv_genres)
         private val reviewsText: TextView = itemView.findViewById(R.id.tv_reviews)
-        private val movieDurationText: TextView = itemView.findViewById(R.id.tv_duration)
         private val starsImages: List<ImageView> = listOf(
             itemView.findViewById(R.id.iv_first_star),
             itemView.findViewById(R.id.iv_second_star),
@@ -52,8 +51,6 @@ class MovieAdapter(private val onClickCard: (item: Movie) -> Unit) :
 
             val context = itemView.context
             pgText.text = context.getString(R.string.movies_list_age_template, movie.pgAge)
-            movieDurationText.text =
-                context.getString(R.string.movies_list_duration_template, movie.runningTime)
             reviewsText.text =
                 context.getString(R.string.movies_list_reviews_template, movie.reviewCount)
             val likeColor = if (movie.isLiked) {
