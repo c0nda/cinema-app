@@ -4,13 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.android.cinemaapp.data.local.room.dao.GenresDao
+import com.android.cinemaapp.data.local.room.dao.GenreDao
 import com.android.cinemaapp.data.local.room.dao.MovieDetailsDao
+import com.android.cinemaapp.data.local.room.dao.MovieGenreCrossRefDao
 import com.android.cinemaapp.data.local.room.dao.MoviesDao
 import com.android.cinemaapp.data.local.room.entities.*
 
 @Database(
-    entities = [MovieDB::class, MovieDetailsDB::class, ActorDB::class, GenreDB::class],
+    entities = [
+        MovieDB::class,
+        MovieDetailsDB::class,
+        ActorDB::class,
+        GenreDB::class,
+        MovieDetailsActorCrossRef::class,
+        MovieDetailsGenreCrossRef::class,
+        MovieGenreCrossRef::class
+    ],
     version = 1,
     exportSchema = false
 )
@@ -29,7 +38,7 @@ abstract class MovieRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     MovieRoomDatabase::class.java,
                     DATABASE_NAME
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }
@@ -38,5 +47,6 @@ abstract class MovieRoomDatabase : RoomDatabase() {
 
     abstract fun getMoviesDao(): MoviesDao
     abstract fun getMovieDetailsDao(): MovieDetailsDao
-    abstract fun getGenresDao(): GenresDao
+    abstract fun getGenreDao(): GenreDao
+    abstract fun getMovieGenreCrossRefDao(): MovieGenreCrossRefDao
 }
