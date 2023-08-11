@@ -4,16 +4,18 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.android.cinemaapp.data.local.room.entities.MovieDB
 import com.android.cinemaapp.data.local.room.entities.MovieWithGenres
 
 @Dao
-abstract class MoviesDao {
+interface MoviesDao {
 
+    @Transaction
     @Query("SELECT * FROM Movie")
-    abstract fun getMovies(): List<MovieWithGenres>
+    fun getMovies(): List<MovieWithGenres>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertMovies(movies: List<MovieDB>)
+    fun insertMovies(movies: List<MovieDB>)
 
 }
