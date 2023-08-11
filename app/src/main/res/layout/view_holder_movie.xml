@@ -127,18 +127,6 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_movie_image"
         tools:ignore="SmallSp" />
 
-    <TextView
-        android:id="@+id/tv_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_137_min"
-        android:textColor="@color/gray_back"
-        android:layout_marginTop="1dp"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_movie_name" />
-
     <ImageView
         android:id="@+id/gray_rectangle"
         android:layout_width="wrap_content"
