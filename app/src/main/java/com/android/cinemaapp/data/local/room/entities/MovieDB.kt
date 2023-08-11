@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Movie")
 data class MovieDB(
     @PrimaryKey
-    val id: Int,
+    val movieId: Int,
     val pgAge: Int,
     val title: String,
     val runningTime: Int,
