@@ -11,4 +11,7 @@ interface GenreDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertGenre(genre: GenreDB)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAllGenres(genres: List<GenreDB>)
+
 }
