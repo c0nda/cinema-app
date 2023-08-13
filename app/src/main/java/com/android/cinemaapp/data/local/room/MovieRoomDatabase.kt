@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.android.cinemaapp.data.local.room.dao.ActorDao
 import com.android.cinemaapp.data.local.room.dao.GenreDao
+import com.android.cinemaapp.data.local.room.dao.MovieDetailsActorCrossRefDao
 import com.android.cinemaapp.data.local.room.dao.MovieDetailsDao
+import com.android.cinemaapp.data.local.room.dao.MovieDetailsGenreCrossRefDao
 import com.android.cinemaapp.data.local.room.dao.MovieGenreCrossRefDao
 import com.android.cinemaapp.data.local.room.dao.MoviesDao
 import com.android.cinemaapp.data.local.room.entities.*
@@ -49,4 +52,7 @@ abstract class MovieRoomDatabase : RoomDatabase() {
     abstract fun getMovieDetailsDao(): MovieDetailsDao
     abstract fun getGenreDao(): GenreDao
     abstract fun getMovieGenreCrossRefDao(): MovieGenreCrossRefDao
+    abstract fun getActorDao(): ActorDao
+    abstract fun getMovieDetailsActorCrossRefDao(): MovieDetailsActorCrossRefDao
+    abstract fun getMovieDetailsGenreCrossRefDao(): MovieDetailsGenreCrossRefDao
 }
