@@ -4,7 +4,9 @@ import com.android.cinemaapp.data.local.LocalDataSource
 import com.android.cinemaapp.data.local.room.entities.ActorDB
 import com.android.cinemaapp.data.local.room.entities.GenreDB
 import com.android.cinemaapp.data.local.room.entities.MovieDB
+import com.android.cinemaapp.data.local.room.entities.MovieDetailsActorCrossRef
 import com.android.cinemaapp.data.local.room.entities.MovieDetailsDB
+import com.android.cinemaapp.data.local.room.entities.MovieDetailsGenreCrossRef
 import com.android.cinemaapp.data.local.room.entities.MovieGenreCrossRef
 import com.android.cinemaapp.model.Actor
 import com.android.cinemaapp.model.Genre
@@ -120,6 +122,20 @@ class RoomStorage(private val db: MovieRoomDatabase) : LocalDataSource {
             )
         }
 
-        db.getMovieDetailsDao().insertMovieDetails(movieDetailsDB, genresDB, actorsDB)
+        db.getMovieDetailsDao().insertMovieDetails(movieDetailsDB)
+        db.getGenreDao().insertAllGenres(genresDB)
+        db.getActorDao().insertAllActors(actorsDB)
+
+        actorsDB.forEach {
+            db.getMovieDetailsActorCrossRefDao().insertMovieDetailsActorCrossRef(
+                MovieDetailsActorCrossRef(movieDetailsDB.movieDetailsId, it.actorId)
+            )
+        }
+
+        genresDB.forEach {
+            db.getMovieDetailsGenreCrossRefDao().insertMovieDetailsGenreCrossRef(
+                MovieDetailsGenreCrossRef(movieDetailsDB.movieDetailsId, it.genreId)
+            )
+        }
     }
 }
