@@ -1,11 +1,13 @@
 package com.android.cinemaapp.data.local.room.entities
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Movie")
+@Entity(tableName = "Movie", indices = [Index(value = ["movieId"], unique = true)])
 data class MovieDB(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    val number: Long = 0,
     val movieId: Int,
     val pgAge: Int,
     val title: String,
